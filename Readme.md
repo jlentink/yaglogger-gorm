@@ -12,8 +12,8 @@ import (
     "gorm.io/driver/postgres"
     "gorm.io/gorm"
     "github.com/jlentink/yaglogger"
-    "github.com/jlentink/yaglogger-gorm"
+    yagloggerGorm "github.com/jlentink/yaglogger-gorm"
 )
 
-db, err := gorm.Open(postgres.Open(dsn), &gorm.Config{Logger: NewLogger()})
+db, err := gorm.Open(postgres.Open(dsn), &gorm.Config{Logger: .NewLogger()})
 ```
