@@ -71,9 +71,9 @@ func (l LogWrapper) Trace(ctx context.Context, begin time.Time, fc func() (strin
 		sql, rows := fc()
 		slowLog := fmt.Sprintf("SLOW SQL >= %v", l.SlowThreshold)
 		if rows == -1 {
-			l.instance.Warn("%s - [warn] ", utils.FileWithLineNum(), slowLog, float64(elapsed.Nanoseconds())/1e6, "-", sql)
+			l.instance.Warn("%s - [warn] %s %d %s %s", utils.FileWithLineNum(), slowLog, float64(elapsed.Nanoseconds())/1e6, "-", sql)
 		} else {
-			l.instance.Warn("%s - [warn] ", utils.FileWithLineNum(), slowLog, float64(elapsed.Nanoseconds())/1e6, rows, sql)
+			l.instance.Warn("%s - [warn] %s %d %s %s", utils.FileWithLineNum(), slowLog, float64(elapsed.Nanoseconds())/1e6, rows, sql)
 		}
 	default:
 		if !l.SilenceQueries {
